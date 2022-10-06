@@ -2,8 +2,8 @@ clc
 clear 
 
 % Trayectoria (X,Y,Z)
-% circular;
-lineal;
+circular;
+% lineal;
 % Trayectori;
 sim('PolarCinematica.slx') 
 % 

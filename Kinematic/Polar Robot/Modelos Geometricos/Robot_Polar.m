@@ -18,24 +18,26 @@ RPolar.teach(q0,'workspace',[-2 2 -2 2 -0.5 2])
 % 
 % % % Test MGD
 P= zeros(0,1);
-% 
+
 % while(true)
+%     disp('Calculo de MGI')
 %     prompt = 'Desea continuar (s) ?: ';
 %     r=input(prompt,'s');
 %     if r== 's'
 %         q = RPolar.getpos();
-%         P(1) =  -d3*cos(q(1))*sin(q(2));%Px
-%         P(2) =  -d3*sin(q(1))*sin(q(2)) ;%Py
-%         P(3) =  d1 + d3*cos(q(2)); %pz
+%         P= mgd_Polar(q(1),q(2),q(3));
 %         disp('Px Py Pz')
 %         disp(P)
 %     else 
+%         close all
 %         break 
 %     end
 % end
 
-
+% Punto a evaluar
+% [0.5,0.5,0.3]
 while(true)
+    disp('Calculo de MGI')
     prompt = 'Desea calcular Q1, Q2,D3 ?. Presione (s) para continuar: '
     r=input(prompt,'s');
     if r== 's'

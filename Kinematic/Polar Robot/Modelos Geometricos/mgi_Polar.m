@@ -1,7 +1,7 @@
-function q = mgi_Polar(x1,x2,x3)
-Px= x1;
-Py= x2;
-Pz=x3;
+function q = mgi_Polar(x,y,z)
+Px= x;
+Py= y;
+Pz= z;
 
 
 D1 =1;
