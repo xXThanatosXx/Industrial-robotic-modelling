@@ -4,7 +4,7 @@ close all
 
 % My robot
 % Longitudes iniciales
-Q1 = 0; %grad
+Q1 = 0; %rad
 R2=0.363; %cm
 R3=0.363; %cm
 alpha= -pi/2; %rad  
@@ -22,40 +22,43 @@ RPP.teach([0.3 0.22 0.23],'workspace',[-0.7 1 -1 1 -0.3 0.7])
 % % Test MGD
 P= zeros(3,1);
 
-while(true)
-    prompt = 'Desea continuar (s) ?: ';
-    r=input(prompt,'s');
-    if r== 's'
-        q = RPP.getpos();
-        P =Cilindric_mgd(q(1),q(2),q(3));
-        disp('Px Py Pz')
-        disp(P)
-    else 
-       
-        break 
-    end
-
-end
+% while(true)
+%     disp('Calculo de MGD')
+%     prompt = 'Desea continuar (s) ?: ';
+%     r=input(prompt,'s');
+%     if r== 's'
+%         q = RPP.getpos();
+%         P =Cilindric_mgd(q(1),q(2),q(3));
+%         disp('Px Py Pz')
+%         disp(P)
+%     else 
+%         close all
+%         break 
+%     end
+% 
+% end
 
 % Puntos
 % [0.3,0.3,0.12]
-% Q= zeros(3,1);
-% % Test MGi
-% while(true)
-%     prompt = 'Desea calcular Q1, R2,R3 (s) ?: '
-%     r=input(prompt,'s');
-%     if r== 's'
-%         P=input('Ingrese [x,y,z] deseada');
-%         plot_sphere(P,0.02,'y');
-%         input('Presiona una tecla para mover el robot')
-%         Q = MGI(P(1), P(2),P(3));
-%         RPP.plot(Q,'workspace',[-0.7 1 -1 1 -0.3 0.7])
-%         disp('Q1 R2 R3')
-%         disp([rad2deg(Q(1)) Q(2) Q(3)])
-%     else 
-%         break
-%     end
-% end
+Q= zeros(3,1);
+% Test MGi
+while(true)
+    disp('Calculo de MGI')
+    prompt = 'Desea calcular Q1, R2,R3 (s) ?: '
+    r=input(prompt,'s');
+    if r== 's'
+        P=input('Ingrese [x,y,z] deseada');
+        plot_sphere(P,0.02,'y');
+        input('Presiona una tecla para mover el robot')
+        Q = MGI(P(1), P(2),P(3));
+        RPP.plot(Q,'workspace',[-0.7 1 -1 1 -0.3 0.7])
+        disp('Q1 R2 R3')
+        disp([rad2deg(Q(1)) Q(2) Q(3)])
+    else
+        close all
+        break
+    end
+end
 
 
 

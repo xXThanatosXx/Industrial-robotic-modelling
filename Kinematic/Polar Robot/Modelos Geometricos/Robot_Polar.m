@@ -2,8 +2,8 @@ clc
 clear 
 close all
 
-Q1= 0; Q2=0;
-d1 = 1; d3 =1;
+Q1= 0; Q2=0; %rad
+d1 = 1; d3 =1; %cm
 %         (theta  d    a   alpha)
 L(1) = Link([Q1, d1,   0,   pi/2,0],'standard');
 L(2) = Link([Q2,  0,   0,  -pi/2,0],'standard');
@@ -20,7 +20,7 @@ RPolar.teach(q0,'workspace',[-2 2 -2 2 -0.5 2])
 P= zeros(0,1);
 
 % while(true)
-%     disp('Calculo de MGI')
+%     disp('Calculo de MGD')
 %     prompt = 'Desea continuar (s) ?: ';
 %     r=input(prompt,'s');
 %     if r== 's'
