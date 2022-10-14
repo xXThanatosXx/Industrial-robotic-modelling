@@ -2,8 +2,8 @@ clc
 clear variables
 
 % Trayectoria (X,Y,Z)
-circular;
-% Lineal;
+% circular;
+Lineal;
 % Simulación de MGI y MGD versión 2015
 sim('Robot3GDL2015.slx') 
 % Simulación de MGI y MGD versión 2022
@@ -21,5 +21,3 @@ ylabel("Eje y")
 legend("T Buscada","T obtenida")
 hold off
 grid on
-
-
