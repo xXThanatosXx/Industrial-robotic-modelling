@@ -1,0 +1,102 @@
+Inertia matrix using Composite links algorithm
+Robot with fixed base
+
+
+Geometric parameters
+j       ant     sigma   mu      gamma   b       alpha   d       theta   r       
+1       0       0       1       0       0       0       0       th1     0       
+2       1       1       1       0       0       0       0       0       R2      
+3       2       1       1       0       0       -pi/2   0       0       R3      
+4       3       0       1       0       0       0       0       th4     0       
+
+Dynamic inertia parameters
+j       XX      XY      XZ      YY      YZ      ZZ      MX      MY      MZ      M       IA      
+1       XX1     XY1     XZ1     YY1     YZ1     ZZ1     MX1     MY1     MZ1     M1      IA1     
+2       XX2     XY2     XZ2     YY2     YZ2     ZZ2     MX2     MY2     MZ2     M2      IA2     
+3       XX3     XY3     XZ3     YY3     YZ3     ZZ3     MX3     MY3     MZ3     M3      IA3     
+4       XX4     XY4     XZ4     YY4     YZ4     ZZ4     MX4     MY4     MZ4     M4      IA4     
+
+External forces and joint parameters
+j       FX      FY      FZ      CX      CY      CZ      FS      FV      QP      QDP     GAM     eta     k       
+1       0       0       0       0       0       0       FS1     FV1     QP1     QDP1    GAM1    0       0       
+2       0       0       0       0       0       0       FS2     FV2     QP2     QDP2    GAM2    0       0       
+3       0       0       0       0       0       0       FS3     FV3     QP3     QDP3    GAM3    0       0       
+4       0       0       0       0       0       0       FS4     FV4     QP4     QDP4    GAM4    0       0       
+
+Base velicities parameters
+axis    W0      WP0     V0      VP0     G       
+X       0       0       0       0       0       
+Y       0       0       0       0       0       
+Z       0       0       0       0       G3      
+
+Equations:
+C1 = cos(th1);
+S1 = sin(th1);
+C4 = cos(th4);
+S4 = sin(th4);
+AS14 = C4*MX4 - MY4*S4;
+AS24 = C4*MY4 + MX4*S4;
+AJ114 = C4*XX4 - S4*XY4;
+AJ214 = C4*XY4 + S4*XX4;
+AJ124 = C4*XY4 - S4*YY4;
+AJ224 = C4*YY4 + S4*XY4;
+AJ134 = C4*XZ4 - S4*YZ4;
+AJ234 = C4*YZ4 + S4*XZ4;
+AJA114 = AJ114*C4 - AJ124*S4;
+AJA214 = AJ214*C4 - AJ224*S4;
+AJA124 = AJ114*S4 + AJ124*C4;
+AJA224 = AJ214*S4 + AJ224*C4;
+JP113 = AJA114 + XX3;
+JP213 = AJA214 + XY3;
+JP313 = AJ134 + XZ3;
+JP123 = AJA124 + XY3;
+JP223 = AJA224 + YY3;
+JP323 = AJ234 + YZ3;
+JP333 = ZZ3 + ZZ4;
+MSP13 = AS14 + MX3;
+MSP23 = AS24 + MY3;
+MSP33 = MZ3 + MZ4;
+MP3 = M3 + M4;
+PAS113 = -MSP33*R3;
+PAS123 = MSP13*R3;
+PAS323 = -MSP23*R3;
+JP112 = JP113 + MP3*R3**2 - 2*PAS113 + XX2;
+JP212 = JP313 - PAS123 + XY2;
+JP312 = -JP213 + XZ2;
+JP222 = JP333 + YY2;
+JP322 = -JP323 - PAS323 + YZ2;
+JP132 = -JP123 + XZ2;
+JP332 = JP223 + MP3*R3**2 - 2*PAS113 + ZZ2;
+MSP12 = MSP13 + MX2;
+MSP22 = MP3*R3 + MSP33 + MY2;
+MSP32 = -MSP23 + MZ2;
+MP2 = M2 + MP3;
+PAS112 = -MSP32*R2;
+PAS132 = MSP12*R2;
+PAS232 = MSP22*R2;
+JP111 = JP112 + MP2*R2**2 - 2*PAS112 + XX1;
+JP211 = JP212 + XY1;
+JP311 = JP312 - PAS132 + XZ1;
+JP221 = JP222 + MP2*R2**2 - 2*PAS112 + YY1;
+JP321 = JP322 - PAS232 + YZ1;
+JP131 = JP132 - PAS132 + XZ1;
+JP331 = JP332 + ZZ1;
+MSP11 = MSP12 + MX1;
+MSP21 = MSP22 + MY1;
+MSP31 = MP2*R2 + MSP32 + MZ1;
+MP1 = M1 + MP2;
+Nd11 = -MP3*R2 + MSP23;
+Ne12 = AJ134 - AS14*R3;
+Ne32 = -AJ234 + AS24*R3;
+Ne21 = -AS24*R2 + ZZ4;
+A11 = IA1 + JP331;
+A21 = 0;
+A31 = MSP13;
+A41 = Ne32;
+A22 = IA2 + MP2;
+A32 = 0;
+A42 = -AS14;
+A33 = IA3 + MP3;
+A43 = 0;
+A44 = IA4 + ZZ4;
+*=*

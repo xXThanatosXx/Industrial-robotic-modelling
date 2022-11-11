@@ -1,0 +1,45 @@
+Jacobian matrix for frame 4
+Projection frame 0, intermediate frame 0
+
+Geometric parameters
+j       ant     sigma   mu      gamma   b       alpha   d       theta   r       
+1       0       0       1       0       0       0       0       th1     0       
+2       1       1       1       0       0       0       0       0       R2      
+3       2       1       1       0       0       -pi/2   0       0       R3      
+4       3       0       1       0       0       0       0       th4     0       
+
+Equations:
+J11 = 0;
+J21 = 0;
+J31 = 0;
+J41 = 0;
+J51 = 0;
+J61 = 1;
+J12 = 0;
+J22 = 0;
+J32 = 1;
+J42 = 0;
+J52 = 0;
+J62 = 0;
+J13 = -sin(th1);
+J23 = cos(th1);
+J33 = 0;
+J43 = 0;
+J53 = 0;
+J63 = 0;
+J14 = -R2*cos(th1);
+J24 = -R2*sin(th1);
+J34 = 0;
+J44 = -sin(th1);
+J54 = cos(th1);
+J64 = 0;
+L11 = 0;
+L21 = -R2;
+L31 = R3*cos(th1);
+L12 = R2;
+L22 = 0;
+L32 = R3*sin(th1);
+L13 = -R3*cos(th1);
+L23 = -R3*sin(th1);
+L33 = 0;
+*=*

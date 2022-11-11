@@ -1,0 +1,116 @@
+Pseudo forces using Newton-Euler Algorithm
+Robot with rigid joints and fixed base
+
+
+Geometric parameters
+j       ant     sigma   mu      gamma   b       alpha   d       theta   r       
+1       0       0       1       0       0       0       0       th1     0       
+2       1       1       1       0       0       0       0       0       R2      
+3       2       1       1       0       0       -pi/2   0       0       R3      
+4       3       0       1       0       0       0       0       th4     0       
+
+Dynamic inertia parameters
+j       XX      XY      XZ      YY      YZ      ZZ      MX      MY      MZ      M       IA      
+1       XX1     XY1     XZ1     YY1     YZ1     ZZ1     MX1     MY1     MZ1     M1      IA1     
+2       XX2     XY2     XZ2     YY2     YZ2     ZZ2     MX2     MY2     MZ2     M2      IA2     
+3       XX3     XY3     XZ3     YY3     YZ3     ZZ3     MX3     MY3     MZ3     M3      IA3     
+4       XX4     XY4     XZ4     YY4     YZ4     ZZ4     MX4     MY4     MZ4     M4      IA4     
+
+External forces and joint parameters
+j       FX      FY      FZ      CX      CY      CZ      FS      FV      QP      QDP     GAM     eta     k       
+1       0       0       0       0       0       0       FS1     FV1     QP1     QDP1    GAM1    0       0       
+2       0       0       0       0       0       0       FS2     FV2     QP2     QDP2    GAM2    0       0       
+3       0       0       0       0       0       0       FS3     FV3     QP3     QDP3    GAM3    0       0       
+4       0       0       0       0       0       0       FS4     FV4     QP4     QDP4    GAM4    0       0       
+
+Base velicities parameters
+axis    W0      WP0     V0      VP0     G       
+X       0       0       0       0       0       
+Y       0       0       0       0       0       
+Z       0       0       0       0       G3      
+
+Equations:
+C1 = cos(th1);
+S1 = sin(th1);
+C4 = cos(th4);
+S4 = sin(th4);
+DV61 = QP1**2;
+VSP23 = -DV61*R3;
+VP13 = -2*QP1*QP3;
+W14 = -QP1*S4;
+W24 = -C4*QP1;
+WP14 = QP4*W24;
+WP24 = -QP4*W14;
+DV14 = W14**2;
+DV24 = W14*W24;
+DV44 = W24**2;
+DV64 = QP4**2;
+U114 = -DV44 - DV64;
+U314 = -2*WP24;
+U224 = -DV14 - DV64;
+U324 = 2*WP14;
+U334 = -DV14 - DV44;
+VP14 = C4*VP13 + G3*S4;
+VP24 = C4*G3 - S4*VP13;
+F11 = -DV61*MX1;
+F21 = -DV61*MY1;
+F31 = -G3*M1;
+PSI11 = QP1*XZ1;
+PSI21 = QP1*YZ1;
+PSI31 = QP1*ZZ1;
+No11 = -PSI21*QP1;
+No21 = PSI11*QP1;
+F12 = -DV61*MX2;
+F22 = -DV61*MY2;
+F32 = -G3*M2;
+PSI12 = QP1*XZ2;
+PSI22 = QP1*YZ2;
+PSI32 = QP1*ZZ2;
+No12 = -PSI22*QP1;
+No22 = PSI12*QP1;
+F13 = -DV61*MX3 + M3*VP13;
+F23 = G3*M3;
+F33 = -DV61*MZ3 + M3*VSP23;
+PSI13 = -QP1*XY3;
+PSI23 = -QP1*YY3;
+PSI33 = -QP1*YZ3;
+No13 = -PSI33*QP1;
+No33 = PSI13*QP1;
+F14 = DV24*MY4 + M4*VP14 + MX4*U114;
+F24 = DV24*MX4 + M4*VP24 + MY4*U224;
+F34 = M4*VSP23 + MX4*U314 + MY4*U324 + MZ4*U334;
+PSI14 = QP4*XZ4 + W14*XX4 + W24*XY4;
+PSI24 = QP4*YZ4 + W14*XY4 + W24*YY4;
+PSI34 = QP4*ZZ4 + W14*XZ4 + W24*YZ4;
+No14 = -PSI24*QP4 + PSI34*W24 + WP14*XX4 + WP24*XY4;
+No24 = PSI14*QP4 - PSI34*W14 + WP14*XY4 + WP24*YY4;
+No34 = -PSI14*W24 + PSI24*W14 + WP14*XZ4 + WP24*YZ4;
+N14 = MY4*VSP23 - MZ4*VP24 + No14;
+N24 = -MX4*VSP23 + MZ4*VP14 + No24;
+N34 = MX4*VP24 - MY4*VP14 + No34;
+FDI14 = C4*F14 - F24*S4;
+FDI24 = C4*F24 + F14*S4;
+E13 = F13 + FDI14;
+E23 = F23 + FDI24;
+E33 = F33 + F34;
+N13 = C4*N14 - G3*MZ3 + MY3*VSP23 - N24*S4 + No13;
+N23 = C4*N24 - MX3*VSP23 + MZ3*VP13 + N14*S4;
+N33 = G3*MX3 - MY3*VP13 + N34 + No33;
+E12 = E13 + F12;
+E22 = E33 + F22;
+E32 = -E23 + F32;
+N12 = -E23*R3 - G3*MY2 + N13 + No12;
+N22 = G3*MX2 + N33 + No22;
+N32 = -E13*R3 - N23;
+E11 = E12 + F11;
+E21 = E22 + F21;
+E31 = E32 + F31;
+N11 = -E22*R2 - G3*MY1 + N12 + No11;
+N21 = E12*R2 + G3*MX1 + N22 + No21;
+FDI11 = C1*E11 - E21*S1;
+FDI21 = C1*E21 + E11*S1;
+GAM1 = FS1*sign(QP1) + FV1*QP1 + N32;
+GAM2 = E32 + FS2*sign(QP2) + FV2*QP2;
+GAM3 = E33 + FS3*sign(QP3) + FV3*QP3;
+GAM4 = FS4*sign(QP4) + FV4*QP4 + N34;
+*=*

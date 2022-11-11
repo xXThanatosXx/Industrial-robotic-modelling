@@ -1,0 +1,25 @@
+Direct Geometric model
+
+Geometric parameters
+j       ant     sigma   mu      gamma   b       alpha   d       theta   r       
+1       0       0       1       0       0       0       0       th1     0       
+2       1       1       1       0       0       0       0       0       R2      
+3       2       1       1       0       0       -pi/2   0       0       R3      
+4       3       0       1       0       0       0       0       th4     0       
+
+Equations:
+Tramsformation matrix 0 T 4
+T0T411 = cos(th1)*cos(th4);
+T0T421 = sin(th1)*cos(th4);
+T0T431 = -sin(th4);
+T0T412 = -sin(th4)*cos(th1);
+T0T422 = -sin(th1)*sin(th4);
+T0T432 = -cos(th4);
+T0T413 = -sin(th1);
+T0T423 = cos(th1);
+T0T433 = 0;
+T0T414 = -R3*sin(th1);
+T0T424 = R3*cos(th1);
+T0T434 = R2;
+
+*=*

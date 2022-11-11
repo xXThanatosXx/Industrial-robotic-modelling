@@ -1,0 +1,12 @@
+Jacobian determinant for frame 4
+
+Geometric parameters
+j       ant     sigma   mu      gamma   b       alpha   d       theta   r       
+1       0       0       1       0       0       0       0       th1     0       
+2       1       1       1       0       0       0       0       0       R2      
+3       2       1       1       0       0       -pi/2   0       0       R3      
+4       3       0       1       0       0       0       0       th4     0       
+
+Equations:
+1
+*=*

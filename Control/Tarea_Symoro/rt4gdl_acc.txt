@@ -1,0 +1,62 @@
+Link accelerations
+
+Geometric parameters
+j       ant     sigma   mu      gamma   b       alpha   d       theta   r       
+1       0       0       1       0       0       0       0       th1     0       
+2       1       1       1       0       0       0       0       0       R2      
+3       2       1       1       0       0       -pi/2   0       0       R3      
+4       3       0       1       0       0       0       0       th4     0       
+
+Equations:
+C1 = cos(th1);
+S1 = sin(th1);
+C4 = cos(th4);
+S4 = sin(th4);
+WP11 = 0;
+WP21 = 0;
+WP31 = QDP1;
+DV61 = QP1**2;
+VP11 = 0;
+VP21 = 0;
+VP31 = 0;
+WP12 = WP11;
+WP22 = WP21;
+WP32 = WP31;
+VSP12 = R2*WP21 + VP11;
+VSP22 = -R2*WP11 + VP21;
+VP12 = VSP12;
+VP22 = VSP22;
+VP32 = QDP2 + VP31;
+WP13 = WP12;
+WP23 = -WP32;
+WP33 = WP22;
+VSP13 = -R3*WP32 + VP12;
+VSP23 = -DV61*R3 + VP22;
+VSP33 = R3*WP12 + VP32;
+VP13 = -2*QP1*QP3 + VSP13;
+VP23 = -VSP33;
+VP33 = QDP3 + VSP23;
+W14 = -QP1*S4;
+W24 = -C4*QP1;
+WP14 = C4*WP13 + QP4*W24 + S4*WP23;
+WP24 = C4*WP23 - QP4*W14 - S4*WP13;
+WP34 = QDP4 + WP33;
+DV14 = W14**2;
+DV24 = W14*W24;
+DV34 = QP4*W14;
+DV44 = W24**2;
+DV54 = QP4*W24;
+DV64 = QP4**2;
+U114 = -DV44 - DV64;
+U214 = DV24 + WP34;
+U314 = DV34 - WP24;
+U124 = DV24 - WP34;
+U224 = -DV14 - DV64;
+U324 = DV54 + WP14;
+U134 = DV34 + WP24;
+U234 = DV54 - WP14;
+U334 = -DV14 - DV44;
+VP14 = C4*VP13 + S4*VP23;
+VP24 = C4*VP23 - S4*VP13;
+VP34 = VP33;
+*=*

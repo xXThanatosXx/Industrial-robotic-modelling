@@ -1,0 +1,39 @@
+Link velocities
+
+Geometric parameters
+j       ant     sigma   mu      gamma   b       alpha   d       theta   r       
+1       0       0       1       0       0       0       0       th1     0       
+2       1       1       1       0       0       0       0       0       R2      
+3       2       1       1       0       0       -pi/2   0       0       R3      
+4       3       0       1       0       0       0       0       th4     0       
+
+Equations:
+C1 = cos(th1);
+S1 = sin(th1);
+C4 = cos(th4);
+S4 = sin(th4);
+W11 = 0;
+W21 = 0;
+W31 = QP1;
+V11 = 0;
+V21 = 0;
+V31 = 0;
+W12 = W11;
+W22 = W21;
+W32 = W31;
+V12 = R2*W21 + V11;
+V22 = -R2*W11 + V21;
+V32 = QP2 + V31;
+W13 = W12;
+W23 = -W32;
+W33 = W22;
+V13 = -R3*W32 + V12;
+V23 = -R3*W12 - V32;
+V33 = QP3 + V22;
+W14 = C4*W13 + S4*W23;
+W24 = C4*W23 - S4*W13;
+W34 = QP4 + W33;
+V14 = C4*V13 + S4*V23;
+V24 = C4*V23 - S4*V13;
+V34 = V33;
+*=*

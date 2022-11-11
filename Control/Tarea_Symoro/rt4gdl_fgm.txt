@@ -1,0 +1,29 @@
+Direct Geometric model
+
+Geometric parameters
+j       ant     sigma   mu      gamma   b       alpha   d       theta   r       
+1       0       0       1       0       0       0       0       th1     0       
+2       1       1       1       0       0       0       0       0       R2      
+3       2       1       1       0       0       -pi/2   0       0       R3      
+4       3       0       1       0       0       0       0       th4     0       
+
+Equations:
+C1 = cos(th1);
+S1 = sin(th1);
+T0T314 = -R3*S1;
+T0T324 = C1*R3;
+C4 = cos(th4);
+S4 = sin(th4);
+T0T411 = C1*C4;
+T0T421 = C4*S1;
+T0T431 = -S4;
+T0T412 = -C1*S4;
+T0T422 = -S1*S4;
+T0T432 = -C4;
+T0T413 = -S1;
+T0T423 = C1;
+T0T433 = 0;
+T0T414 = T0T314;
+T0T424 = T0T324;
+T0T434 = R2;
+*=*
